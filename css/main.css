@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: solid;
+    
+}
+
+#player {
+    flex-direction: row; 
+    display: flex;
+}
+
+#dealer {
+    display: flex;
+    flex-direction: row; 
+    
+}
+div.dealer-cards {
+    display: flex;
+    height: 325px;
+    width: 200px;
+    align-items: center;
+   justify-content: center;
+   margin-right: 10px;
+   border: solid;
+   margin-left: 10px;
+}
+
+div.player-cards{
+    display: flex;
+    height: 325px;
+    width: 200px;
+    align-items: center;
+   justify-content: center;
+   margin-right: 10px;
+   border: solid;
+   margin-left: 10px;
+   margin-top: 10px;
+
+}
+
+#dealer-total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    margin-top: 50px;
+    border: solid;
+}
+#player-total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    border: solid;
+}
+
+#button {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin: 10px 300px 0 300px;
+    
+}
+
+html, * {
+    box-sizing: border-box;
+  }
+  
+html, body {
+    height: 100%;
+  }
+  
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border: 4px dotted grey;
+  }
+  
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 16px;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 4px;
+    outline: none;
+}
+  
+  button:hover {
+    background-color: red;
+    color: black;
+    cursor: pointer;
+}
