@@ -14,7 +14,8 @@ body {
     flex-direction: column;
     width: 100%;
     border: solid;
-    
+    align-items: center;
+    justify-content: center;
 }
 
 #player {
@@ -74,10 +75,9 @@ div.player-cards{
 
 #button {
     display: flex;
-    flex-direction: column;
     width: 200px;
-    margin: 10px 300px 0 300px;
-    
+    justify-content: center;
+    align-items: center;
 }
 
 html, * {
@@ -110,4 +110,10 @@ button {
     background-color: red;
     color: black;
     cursor: pointer;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
