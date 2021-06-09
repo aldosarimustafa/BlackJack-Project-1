@@ -102,7 +102,7 @@ button {
     font-size: 16px;
     color: grey;
     border: 1px solid grey;
-    border-radius: 4px;
+    border-radius: 50%;
     outline: none;
 }
   

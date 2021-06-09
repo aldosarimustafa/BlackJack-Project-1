@@ -44,6 +44,7 @@ function setDeal() {
   standEl.disabled = false;
   hitEl.disabled = false;
   dealEl.disabled = true;
+  dealEl.style.visibility = "hidden"
   headerEl.innerHTML = "Chose Hit or Stand!"
   dealHand();
     render();
@@ -135,6 +136,7 @@ function hit() {
         hitEl.disabled = true;
         standEl.disabled = true;
         dealEl.disabled = false;
+        dealEl.style.visibility = "visible"
       }
     }
     
@@ -143,6 +145,7 @@ function playerWins() {
     hitEl.disabled = true;
     standEl.disabled = true;
     dealEl.disabled = false;
+    dealEl.style.visibility = "visible"
 }
 
 function dealerWins() {
@@ -150,6 +153,7 @@ function dealerWins() {
   hitEl.disabled = true;
   standEl.disabled = true;
   dealEl.disabled = false;
+  dealEl.style.visibility = "visible"
 }
 
 
@@ -159,11 +163,13 @@ function checkBlkJck() {
     hitEl.disabled = true;
     standEl.disabled = true;
     dealEl.disabled = false;
+    dealEl.style.visibility = "visible"
   }else if (dealerTotal === 21) {
     headerEl.innerHTML = "Dealer BlackJack!!"
     hitEl.disabled = true;
     standEl.disabled = true;
     dealEl.disabled = false;
+    dealEl.style.visibility = "visible"
   }
 }
 
