@@ -134,13 +134,11 @@ input {
 
 #bet-container {
     display: flex;
-
+    background-color: rgb(164, 226, 64);
+    border: double;
+    border-radius: 40%;
 }
 
 #bet-container > div {
-    width: 15vmin;
-}
-
-#bank {
-    background-color: rgb(164, 226, 64);
+    width: 10vmin;
 }
