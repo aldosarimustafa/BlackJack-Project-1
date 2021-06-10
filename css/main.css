@@ -7,15 +7,25 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 20vmin;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10vmin;
 }
 
 body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    border: solid;
+    margin: 0;
+    border: 10px double lime;
     align-items: center;
     justify-content: center;
+    background-color: cornflowerblue;
 }
 
 #player {
@@ -31,25 +41,26 @@ body {
 div.dealer-cards {
     display: flex;
     height: 325px;
-    width: 200px;
+    width: 40vmin;
     align-items: center;
-   justify-content: center;
-   margin-right: 10px;
-   border: solid;
-   margin-left: 10px;
+    justify-content: center;
+    margin-right: 10px;
+    border: solid;
+    margin-left: 10px;
+    background-color: red;
 }
 
 div.player-cards{
     display: flex;
     height: 325px;
-    width: 200px;
+    width: 40vmin;
     align-items: center;
-   justify-content: center;
-   margin-right: 10px;
-   border: solid;
-   margin-left: 10px;
-   margin-top: 10px;
-
+    justify-content: center;
+    margin-right: 10px;
+    border: solid;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: red;
 }
 
 #dealer-total {
@@ -61,6 +72,7 @@ div.player-cards{
     height: 200px;
     margin-top: 50px;
     border: solid;
+    background-color: sandybrown;
 }
 #player-total {
     display: flex;
@@ -71,13 +83,19 @@ div.player-cards{
     height: 200px;
     border-radius: 100px;
     border: solid;
+    background-color: sandybrown;
 }
 
 #button {
     display: flex;
     width: 200px;
+    margin-top: 5vmin;
+    margin-right: 10vmin;
     justify-content: center;
     align-items: center;
+    background-color: darkkhaki;
+    border: 3px solid red;
+    border-radius: 50%;
 }
 
 html, * {
@@ -100,7 +118,8 @@ button {
     margin: 10px auto;
     padding: 10px;
     font-size: 16px;
-    color: grey;
+    background-color: gold;
+    color: red;
     border: 1px solid grey;
     border-radius: 50%;
     outline: none;
@@ -116,4 +135,12 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+input {
+    border: 2px solid black;
+    margin: 10px;
+    width: 10vmin;
+    height: 5vmin;
+    font-size: medium;
+    margin-right: 10vmin;
 }

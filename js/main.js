@@ -10,7 +10,9 @@ let dealerHand;
 let winner;
 let dealerTotal;
 let playerTotal;
-let gameStatus
+let gameStatus;
+let bank;
+let bet;
 
 /*----- cached element references -----*/
 const dealEl = document.querySelector("#deal");
@@ -21,10 +23,14 @@ const playerTotalEl = document.getElementById("player-total");
 const dealerTotalEl = document.getElementById("dealer-total");
 const hitEl = document.querySelector("#hit");
 const standEl = document.querySelector("#stand");
+const bankEl = document.querySelector("#bank");
+const betEl = document.querySelector("#bet");
+const betInputEl = document.querySelector("#bet-input");
 /*----- event listeners -----*/
-document.querySelector("#deal").addEventListener("click", setDeal)
-document.querySelector("#hit").addEventListener("click", hit)
-document.querySelector("#stand").addEventListener("click", stand)
+document.querySelector("#deal").addEventListener("click", setDeal);
+document.querySelector("#hit").addEventListener("click", hit);
+document.querySelector("#stand").addEventListener("click", stand);
+document.querySelector("#submit").addEventListener("click", handleBet);
 /*----- functions -----*/
 init()
 function init() {
@@ -33,6 +39,8 @@ function init() {
   dealerHand = [];
   playerTotal = 0;
   dealerTotal = 0;
+  bet = 0;
+  bank = 500;
   gameStatus = null;
   winner = null;
  hitEl.disabled = true;
@@ -68,13 +76,9 @@ function render() {
     playerCardsHtml += `<div class="card ${card.face}"></div>`;
     playerTotal += card.value;
     playerTotalEl.innerHTML = playerTotal;
-    
+  
   });
   playerCardEl.innerHTML = playerCardsHtml;
-  
- 
-  
-  
     dealerTotal = 0;
   let dealerCardsHtml = "";
   dealerHand.forEach(function(card) {
@@ -87,7 +91,7 @@ function render() {
     
   dealerCardEl.innerHTML = dealerCardsHtml;
   checkBlkJck();
-  
+  renderBets();
 };
 
 function hit() {
@@ -137,6 +141,9 @@ function hit() {
         standEl.disabled = true;
         dealEl.disabled = false;
         dealEl.style.visibility = "visible"
+        bank += bet;
+        bet = 0;
+        renderBets();
       }
     }
     
@@ -146,6 +153,9 @@ function playerWins() {
     standEl.disabled = true;
     dealEl.disabled = false;
     dealEl.style.visibility = "visible"
+    bank += bet * 2;
+    bet = 0;
+    renderBets();
 }
 
 function dealerWins() {
@@ -153,7 +163,9 @@ function dealerWins() {
   hitEl.disabled = true;
   standEl.disabled = true;
   dealEl.disabled = false;
-  dealEl.style.visibility = "visible"
+  dealEl.style.visibility = "visible";
+  bet = 0;
+  renderBets();
 }
 
 
@@ -164,12 +176,14 @@ function checkBlkJck() {
     standEl.disabled = true;
     dealEl.disabled = false;
     dealEl.style.visibility = "visible"
+    playerWins();
   }else if (dealerTotal === 21) {
     headerEl.innerHTML = "Dealer BlackJack!!"
     hitEl.disabled = true;
     standEl.disabled = true;
     dealEl.disabled = false;
     dealEl.style.visibility = "visible"
+    dealerWins();
   }
 }
 
@@ -200,3 +214,17 @@ function getNewShuffledDeck() {
       }) 
       return deck;
     }  
+
+    function handleBet() {
+      const betAmount = parseInt(betInputEl.value);
+      if (betAmount > bank || isNaN(betAmount)) return;
+        bet += betAmount;
+        bank -= betAmount;
+        betInputEl.value = "";
+        renderBets();
+    }
+
+    function renderBets() {
+      bankEl.innerText = `Bank- ${bank}`
+      betEl.innerText = `Bet- ${bet}`
+    }
