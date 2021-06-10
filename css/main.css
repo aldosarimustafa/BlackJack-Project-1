@@ -7,14 +7,12 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20vmin;
 }
 
 h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10vmin;
 }
 
 body {
@@ -29,33 +27,9 @@ body {
 }
 
 #player {
-    flex-direction: row; 
+    flex-direction: column; 
     display: flex;
-}
-
-#dealer {
-    display: flex;
-    flex-direction: row; 
-    
-}
-div.dealer-cards {
-    display: flex;
-    height: 325px;
-    width: 40vmin;
     align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    border: solid;
-    margin-left: 10px;
-    background-color: red;
-}
-
-div.player-cards{
-    display: flex;
-    height: 325px;
-    width: 40vmin;
-    align-items: center;
-    justify-content: center;
     margin-right: 10px;
     border: solid;
     margin-left: 10px;
@@ -63,25 +37,40 @@ div.player-cards{
     background-color: red;
 }
 
-#dealer-total {
+#dealer {
     display: flex;
-    justify-content: center;
+    flex-direction: column; 
     align-items: center;
-    border-radius: 100px;
-    width: 200px;
-    height: 200px;
-    margin-top: 50px;
+    margin-right: 10px;
     border: solid;
-    background-color: sandybrown;
+    margin-left: 10px;
+    background-color: red;
+    
 }
-#player-total {
+div.dealer-cards {
+    display: flex;
+    height: 30vmin;
+    width: 50vmin;
+    align-items: center;
+    justify-content: center;
+}
+
+div.player-cards{
+    display: flex;
+    height: 30vmin;
+    width: 50vmin;
+    align-items: center;
+    justify-content: center;
+}
+
+#dealer-total, #player-total {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-    width: 200px;
-    height: 200px;
     border-radius: 100px;
+    width: 50px;
+    height: 50px;
+    margin: 10px 0;
     border: solid;
     background-color: sandybrown;
 }
@@ -90,7 +79,6 @@ div.player-cards{
     display: flex;
     width: 200px;
     margin-top: 5vmin;
-    margin-right: 10vmin;
     justify-content: center;
     align-items: center;
     background-color: darkkhaki;
@@ -142,5 +130,17 @@ input {
     width: 10vmin;
     height: 5vmin;
     font-size: medium;
-    margin-right: 10vmin;
+}
+
+#bet-container {
+    display: flex;
+
+}
+
+#bet-container > div {
+    width: 15vmin;
+}
+
+#bank {
+    background-color: rgb(164, 226, 64);
 }

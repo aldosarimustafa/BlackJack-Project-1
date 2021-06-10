@@ -34,7 +34,7 @@ document.querySelector("#submit").addEventListener("click", handleBet);
 /*----- functions -----*/
 init()
 function init() {
-  shuffledDeck = getNewShuffledDeck(); 
+  shuffledDeck = getNewShuffledDeck();
   playerHand = [];
   dealerHand = [];
   playerTotal = 0;
@@ -43,10 +43,10 @@ function init() {
   bank = 500;
   gameStatus = null;
   winner = null;
- hitEl.disabled = true;
+  hitEl.disabled = true;
   standEl.disabled = true;
-   render();
-} 
+  render();
+}
 
 function setDeal() {
   standEl.disabled = false;
@@ -55,107 +55,107 @@ function setDeal() {
   dealEl.style.visibility = "hidden"
   headerEl.innerHTML = "Chose Hit or Stand!"
   dealHand();
-    render();
- }
+  render();
+}
 
 function dealHand(hand) {
-    playerHand = [shuffledDeck.pop(), shuffledDeck.pop()]
-    dealerHand = [shuffledDeck.pop(), shuffledDeck.pop()]
+  playerHand = [shuffledDeck.pop(), shuffledDeck.pop()]
+  dealerHand = [shuffledDeck.pop(), shuffledDeck.pop()]
 };
-  
 
-  
+
+
 
 function render() {
-  if(dealerHand.length < 5) {
+  if (dealerHand.length < 5) {
     getNewShuffledDeck();
   }
-   playerTotal = 0; 
+  playerTotal = 0;
   let playerCardsHtml = '';
-  playerHand.forEach(function(card) {
+  playerHand.forEach(function (card) {
     playerCardsHtml += `<div class="card ${card.face}"></div>`;
     playerTotal += card.value;
     playerTotalEl.innerHTML = playerTotal;
-  
+
   });
   playerCardEl.innerHTML = playerCardsHtml;
-    dealerTotal = 0;
+  dealerTotal = 0;
   let dealerCardsHtml = "";
-  dealerHand.forEach(function(card) {
+  dealerHand.forEach(function (card) {
     dealerCardsHtml += `<div class="card ${card.face}"></div>`;
     dealerTotal += card.value;
     dealerTotalEl.innerHTML = dealerTotal;
-    
-    
+
+
   });
-    
+
   dealerCardEl.innerHTML = dealerCardsHtml;
   checkBlkJck();
   renderBets();
 };
 
 function hit() {
-  
+
   playerHand.push(shuffledDeck.pop());
   render();
-  if(dealerTotal === 21 || playerTotal > 21) {
+  if (dealerTotal === 21 || playerTotal > 21) {
     dealerWins();
     return;
   } else if (playerTotal === 21) {
     playerWins();
     return;
-  } else if(playerTotal > 21) {
+  } else if (playerTotal > 21) {
     dealerWins();
     return;
   } else if (dealerTotal === playerTotal) {
     push();
-  }return;
-  
-  };
-  
-  function stand() {
-    hitEl.disabled = true;
-    standEl.disabled = true;
+  } return;
+
+};
+
+function stand() {
+  hitEl.disabled = true;
+  standEl.disabled = true;
+  dealerHand.push(shuffledDeck.pop());
+  render();
+  if (dealerTotal < 18 || dealerTotal < playerTotal) {
     dealerHand.push(shuffledDeck.pop());
     render();
-    if (dealerTotal < 18 || dealerTotal < playerTotal) {
-      dealerHand.push(shuffledDeck.pop());
-      render();
-    }
-    if (dealerTotal > 21) {
-      playerWins();
-    } else if (dealerTotal > playerTotal && dealerTotal < 22) {
-      dealerWins();
-    } else if (dealerTotal === playerTotal) {
-      push();
-    }
-   
-    
+  }
+  if (dealerTotal > 21) {
+    playerWins();
+  } else if (dealerTotal > playerTotal && dealerTotal < 22) {
+    dealerWins();
+  } else if (dealerTotal === playerTotal) {
+    push();
   }
 
-  function push() {
-    
-      if(playerTotal >= 18 && dealerTotal >= 18) {
-        headerEl.innerHTML = "Push";
-        hitEl.disabled = true;
-        standEl.disabled = true;
-        dealEl.disabled = false;
-        dealEl.style.visibility = "visible"
-        bank += bet;
-        bet = 0;
-        renderBets();
-      }
-    }
-    
-function playerWins() {
-    headerEl.innerHTML = "Congrats!, Player Won";
+
+}
+
+function push() {
+
+  if (playerTotal >= 18 && dealerTotal >= 18) {
+    headerEl.innerHTML = "Push";
     hitEl.disabled = true;
     standEl.disabled = true;
     dealEl.disabled = false;
     dealEl.style.visibility = "visible"
-    bank += bet * 2;
+    bank += bet;
     bet = 0;
     renderBets();
+  }
+}
+
+function playerWins() {
+  headerEl.innerHTML = "Congrats!, Player Won";
+  hitEl.disabled = true;
+  standEl.disabled = true;
+  dealEl.disabled = false;
+  dealEl.style.visibility = "visible"
+  bank += bet * 2;
+  bet = 0;
+  renderBets();
 }
 
 function dealerWins() {
@@ -177,7 +177,7 @@ function checkBlkJck() {
     dealEl.disabled = false;
     dealEl.style.visibility = "visible"
     playerWins();
-  }else if (dealerTotal === 21) {
+  } else if (dealerTotal === 21) {
     headerEl.innerHTML = "Dealer BlackJack!!"
     hitEl.disabled = true;
     standEl.disabled = true;
@@ -188,43 +188,43 @@ function checkBlkJck() {
 }
 
 function getNewShuffledDeck() {
-    const tempDeck = [...masterDeck];
-    const newShuffledDeck = [];
-    while (tempDeck.length) {
-      const rndIdx = Math.floor(Math.random() * tempDeck.length);
-      newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
-    }
-    if (newShuffledDeck.length < 4) {
-      getNewShuffledDeck(); 
-    }
-    return newShuffledDeck;
-    
-  }  
+  const tempDeck = [...masterDeck];
+  const newShuffledDeck = [];
+  while (tempDeck.length) {
+    const rndIdx = Math.floor(Math.random() * tempDeck.length);
+    newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
+  }
+  if (newShuffledDeck.length < 4) {
+    getNewShuffledDeck();
+  }
+  return newShuffledDeck;
 
-  function buildMasterDeck() {
-      const deck = [];
-    suits.forEach(function(suit) {
-        ranks.forEach(function(rank) {
-          deck.push({
-            face: `${suit}${rank}`,
-            value: Number(rank) || (rank === "A" ? 11 : 10),
-            hidden: false
-          })
-        })
-      }) 
-      return deck;
-    }  
+}
 
-    function handleBet() {
-      const betAmount = parseInt(betInputEl.value);
-      if (betAmount > bank || isNaN(betAmount)) return;
-        bet += betAmount;
-        bank -= betAmount;
-        betInputEl.value = "";
-        renderBets();
-    }
+function buildMasterDeck() {
+  const deck = [];
+  suits.forEach(function (suit) {
+    ranks.forEach(function (rank) {
+      deck.push({
+        face: `${suit}${rank}`,
+        value: Number(rank) || (rank === "A" ? 11 : 10),
+        hidden: false
+      })
+    })
+  })
+  return deck;
+}
 
-    function renderBets() {
-      bankEl.innerText = `Bank- ${bank}`
-      betEl.innerText = `Bet- ${bet}`
-    }
+function handleBet() {
+  const betAmount = parseInt(betInputEl.value);
+  if (betAmount > bank || isNaN(betAmount)) return;
+  bet += betAmount;
+  bank -= betAmount;
+  betInputEl.value = "";
+  renderBets();
+}
+
+function renderBets() {
+  bankEl.innerText = `Bank- ${bank}`
+  betEl.innerText = `Bet- ${bet}`
+}
